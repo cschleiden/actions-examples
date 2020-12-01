@@ -1,0 +1,16 @@
+name: Dynamic Secrets 
+
+on: workflow_dispatch
+
+
+jobs:
+  example:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        s: [1, 2]
+
+    steps:
+      - name: Output secret
+        run: echo Value of SECRET_${{ matrix.s }} ${{ secrets[matrix.s] }} | rev

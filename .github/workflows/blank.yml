@@ -13,4 +13,6 @@ jobs:
 
     steps:
       - name: Output secret
-        run: echo Value of SECRET_${{ matrix.s }} ${{ secrets[matrix.s] }} | rev
+        run: |
+          echo "Value of SECRET_${{ matrix.s }}:"
+          echo "'${{ secrets[format('SECRET_{0}', matrix.s)] }}'" | rev

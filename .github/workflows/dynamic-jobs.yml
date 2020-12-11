@@ -2,17 +2,19 @@ name: dynamic jobs
 
 on:
   workflow_dispatch:
-
+    inputs:
+      values:            
 
 jobs:
-  dice:
+  work:
     runs-on: ubuntu-latest
     
-    outputs:
-      sum:
-        description: 'Number of jobs to run'
-        
-  work:
     strategy:
       matrix:
+        id: ${{ fromJson( github.event.inputs.values ) }}
+  
+    name: ${{ matrix.id }}
+    
+    steps:
+      - run: echo "hello world"
         

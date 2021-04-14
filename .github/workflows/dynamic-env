@@ -1,0 +1,17 @@
+name: Dynamic environment
+
+on:
+  workflow_dispatch:
+    inputs:
+      envName:
+      
+      
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+  
+    environment:
+      name: ${{ github.event.inputs.envName }}
+      
+    steps:
+    - run: echo "Deploy!"

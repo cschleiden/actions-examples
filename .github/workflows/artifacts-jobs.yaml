@@ -1,0 +1,25 @@
+name: Artifacts between jobs
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - run: echo "test" > output.txt
+    - uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact
+        path: output.txt
+    
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    needs: build
+    
+    steps:
+    - uses: actions/download-artifact@v2
+      with:
+        name: my-artifact
+    - run: cat output.txt

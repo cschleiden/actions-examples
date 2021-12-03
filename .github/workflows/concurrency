@@ -1,0 +1,18 @@
+name: GroupPermit
+
+# Controls when the action will run. 
+on: workflow_dispatch
+
+concurrency:
+   group: build-deploy
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run a one-line script
+        run: |
+          echo "sha ${{ github.sha }}"
+          echo "ref ${{ github.ref }}"
+          echo "event ${{ github.event.number }}"

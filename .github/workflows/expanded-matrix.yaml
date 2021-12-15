@@ -1,7 +1,10 @@
 name: Expanded matrix
 
+on: workflow_dispatch
+
 jobs:
   build:
+    runs-on: ubuntu-latest 
     strategy:
       matrix:
         flag: [true, false]

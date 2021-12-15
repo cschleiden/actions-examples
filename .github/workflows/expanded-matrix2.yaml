@@ -1,0 +1,19 @@
+name: Expanded matrix 2
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest 
+    strategy:
+      matrix:
+        flag: [true, false]
+        input:
+        - version: v1
+          url: u1
+        - version: v2
+          url: v2
+        - version: v3
+          url: v3
+    steps:
+    - run: echo "${{ toJson(matrix) }}"

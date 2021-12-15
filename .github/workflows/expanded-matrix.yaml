@@ -1,0 +1,17 @@
+name: Expanded matrix
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        flag: [true, false]
+        version: [v0, v1, v2, v3]
+        include:
+        - version: v0
+          url: u0
+        - version: v1
+          url: u1
+        - version: v2
+          url: u2
+    steps:
+    - run: echo '${{ toJson(matrix) }}'
